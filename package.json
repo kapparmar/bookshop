@@ -1,0 +1,75 @@
+{
+    "name": "bookshop",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "https://github.com/jacobahtan/bootcamp-cap-bookshop",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/audit-logging": "^5.5.3",
+        "@sap/cds": "^5",
+        "@sap/cds-dk": "^4.9.5",
+        "@sap/cds-odata-v2-adapter-proxy": "^1.8.19",
+        "@sap/cloud-sdk-vdm-business-partner-service": "^2.0.0",
+        "@sap/hana-client": "^2.12.25",
+        "@sap/xsenv": "^3.2.2",
+        "@sap/xssec": "^3.2.13",
+        "cors": "^2.8.5",
+        "express": "^4",
+        "passport": "^0.6.0",
+        "swagger-ui-express": "^4.4.0"
+    },
+    "devDependencies": {
+        "@sap/hdi-deploy": "^4.3.3",
+        "@sap/ux-specification": "^1.100.3"
+    },
+    "scripts": {
+        "start": "cds run"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "sapux": [
+        "app/catalog"
+    ],
+    "cds": {
+        "requires": {
+            "db": {
+                "[development]": {
+                    "kind": "hana"
+                },
+                "[production]": {
+                    "kind": "hana"
+                }
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        },
+        "features": {
+            "fiori_preview": "true"
+        }
+    }
+}
