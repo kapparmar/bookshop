@@ -1,0 +1,48 @@
+{
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^6",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.1.6"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "cds": {
+    "features": {
+      "fiori_preview": true
+    },
+    "requires": {
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        },
+        "db": {
+          "kind": "hana"
+        },
+        "hana": {
+          "deploy-format": "hdbtable"
+      },
+        "approuter": {
+          "kind": "cloudfoundry"
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db/bookshop.db"
+        }
+      }
+    }
+  }
+}
